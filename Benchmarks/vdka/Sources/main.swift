@@ -1,6 +1,5 @@
 import JSON
 import Bench
-import struct Bench.User
 
 extension User.Friend: JSONInitializable {
 
@@ -31,8 +30,8 @@ extension User: JSONInitializable {
     self.registered     = try json.get("registered")
     self.latitude       = try json.get("latitude")
     self.longitude      = try json.get("longitude")
-    self.tags           = json["tags"].array?.flatMap({ $0.string }) ?? []
-    self.friends        = try json["friends"].array?.map(Friend.init) ?? []
+    self.tags           = try json.get("tags")
+    self.friends        = try json.get("friends")
     self.greeting       = try json.get("greeting")
     self.favoriteFruit  = try json.get("favoriteFruit")
   }
@@ -59,3 +58,11 @@ let modelResults = try bench { bytes in
 }
 
 describe(benchmark: "vdka/json Model", modelResults)
+
+let singleModelResults = try bench(times: 100, using: "single") { bytes in
+  let json = try JSON.Parser.parse(bytes)
+  _ = try User(json: json)
+}
+
+describe(benchmark: "vdka/json Single Model", singleModelResults)
+

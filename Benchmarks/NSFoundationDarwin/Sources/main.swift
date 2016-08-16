@@ -13,6 +13,7 @@ extension User.Friend {
       let id    = json["id"] as? Int,
       let name  = json["name"] as? String
       else { throw JSONError.typeMismatch }
+
     self.id   = id
     self.name = name
   }
@@ -50,7 +51,6 @@ extension User {
       let greeting          = json["greeting"] as? String,
       let favoriteFruit     = json["favoriteFruit"] as? String
       else { throw JSONError.typeMismatch }
-
 
     self.id             = id
     self.index          = index
@@ -103,4 +103,15 @@ let modelResults = try bench { bytes in
 }
 
 describe(benchmark: "Foundation/JSONSerialization(Darwin) Model", modelResults)
+
+let singleModelResults = try bench(times: 100, using: "single") { bytes in
+  let data = Data(bytes: bytes)
+
+  let json: Any = try JSONSerialization.jsonObject(with: data)
+  _ = try User(json: json)
+}
+
+describe(benchmark: "Foundation/JSONSerialization(Darwin) Single Model", singleModelResults)
+
+
 
