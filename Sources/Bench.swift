@@ -1,13 +1,8 @@
 
 import Foundation
 
-public enum Fixture: String {
-  case large
-  case large_min
-}
-
 /// memoize it.
-var fixtures: [Fixture: [UInt8]] = [:]
+var fixtures: [String: [UInt8]] = [:]
 
 public func describe(benchmark name: String, _ results: (Double, Double)) {
 
@@ -17,8 +12,8 @@ public func describe(benchmark name: String, _ results: (Double, Double)) {
   print("")
 }
 
-public func bench(times: Int = 10, using fixture: Fixture = .large, this: ([UInt8]) throws -> Void) throws -> (average: Double, variance: Double) {
-  let jsonBytes = fixtures[fixture] ?? loadFixture(fixture.rawValue)
+public func bench(times: Int = 10, using fixture: String = "large", this: ([UInt8]) throws -> Void) throws -> (average: Double, variance: Double) {
+  let jsonBytes = fixtures[fixture] ?? loadFixture(fixture)
   if fixtures[fixture] == nil {
     fixtures[fixture] = jsonBytes
   }
