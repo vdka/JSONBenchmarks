@@ -1,11 +1,11 @@
 # Results
 
 ## Just Parsing
-|               | Foundation | vdka/JSON |      Jay | Vapor/JSON |  memcpy(100x) |
-|--------------:|-----------:|----------:|---------:|-----------:|--------------:|
-| `-Ounchecked` |      `8ms` | 	  `16ms` |  `152ms` |    `154ms` |      `5.19ms` |
-|          `-O` |   `8.86ms` | 	`19.1ms` |  `168ms` |    `173ms` |      `5.37ms` |
-|      `-Onone` |   `9.28ms` | 	 `113ms` | `1069ms` |    `237ms` |      `7.29ms` |
+|               | Foundation | vdka/JSON |      Jay | Vapor/JSON | Zewo/JSON |  memcpy(100x) |
+|--------------:|-----------:|----------:|---------:|-----------:|----------:|--------------:|
+| `-Ounchecked` |      `8ms` | 	  `16ms` |  `152ms` |    `154ms` |  `57.6ms` |      `5.19ms` |
+|          `-O` |   `8.86ms` | 	`19.1ms` |  `168ms` |    `173ms` |  `75.2ms` |      `5.37ms` |
+|      `-Onone` |   `9.28ms` | 	 `113ms` | `1069ms` |    `237ms` |   `378ms` |      `7.29ms` |
 
 ## Parsing & Model Transform
 |               | Foundation | vdka/JSON |
