@@ -50,7 +50,7 @@ func urlForFixture(_ name: String) -> URL {
   return url
 }
 
-func loadFixture(_ name: String) -> [UInt8] {
+public func loadFixture(_ name: String) -> [UInt8] {
 
   let url = urlForFixture(name)
   let data = Array(try! String(contentsOf: url).utf8)
