@@ -113,5 +113,3 @@ let singleModelResults = try bench(times: 100, using: "single") { bytes in
 
 describe(benchmark: "Foundation/JSONSerialization(Darwin) Single Model", singleModelResults)
 
-
-

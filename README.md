@@ -3,9 +3,10 @@
 ## Just Parsing
 |               | Foundation | vdka/JSON |      Jay | Vapor/JSON | Zewo/JSON |  memcpy(100x) |
 |--------------:|-----------:|----------:|---------:|-----------:|----------:|--------------:|
-| `-Ounchecked` |      `8ms` | 	  `16ms` |  `152ms` |    `154ms` |  `57.6ms` |      `5.19ms` |
-|          `-O` |   `8.86ms` | 	`19.1ms` |  `168ms` |    `173ms` |  `75.2ms` |      `5.37ms` |
-|      `-Onone` |   `9.28ms` | 	 `113ms` | `1069ms` |    `237ms` |   `378ms` |      `7.29ms` |
+| `-Ounchecked` |      `8ms` |    `16ms` |  `101ms` |    `154ms` |  `57.6ms` |      `5.19ms` |
+|          `-O` |   `8.86ms` |  `19.1ms` |  `130ms` |    `173ms` |  `75.2ms` |      `5.37ms` |
+|      `-Onone` |   `9.28ms` |   `113ms` |  `595ms` |    `237ms` |   `378ms` |      `7.29ms` |
+|  `-c release` |            |           | `87.1ms` |            |           |               |
 
 ## Parsing & Model Transform
 |               | Foundation | vdka/JSON |
