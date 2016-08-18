@@ -8,6 +8,8 @@
 |      `-Onone` |   `9.28ms` |   `113ms` |  `595ms` |    `237ms` |   `378ms` |      `7.29ms` |
 |  `-c release` |            |           | `87.1ms` |            |           |               |
 
+Note: Foundation here is on Darwin which is not the same as the [this code](https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/NSJSONSerialization.swift) that will run on linux.
+
 ## Parsing & Model Transform
 |               | Foundation | vdka/JSON |
 |---------------|-----------:|----------:|
