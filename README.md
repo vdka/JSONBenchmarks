@@ -56,3 +56,5 @@ struct User {
   }
 }
 ```
+
+![Specs](ComputerSpecs.png)
