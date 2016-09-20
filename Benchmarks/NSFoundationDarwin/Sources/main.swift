@@ -9,7 +9,7 @@ extension User.Friend {
 
   public init(json: Any) throws {
     guard
-      let json  = json as? [String: Any],
+      let json  = json as? NSDictionary,
       let id    = json["id"] as? Int,
       let name  = json["name"] as? String
       else { throw JSONError.typeMismatch }
@@ -23,7 +23,7 @@ extension User {
 
   public init(json: Any) throws {
     guard
-      let json              = json as? [String: Any],
+      let json              = json as? NSDictionary,
       let id                = json["_id"] as? String,
       let index             = json["index"] as? Int,
       let guid              = json["guid"] as? String,
@@ -45,7 +45,7 @@ extension User {
       let latitude          = json["latitude"] as? Double,
       let longitude         = json["longitude"] as? Double,
       let tags              = json["tags"] as? [String],
-      let friendsObjects    = json["friends"] as? [Any],
+      let friendsObjects    = json["friends"] as? NSArray,
       //let tags          = json["tags"].array?.flatMap({ $0.string }) ?? []
       //let friends       = try json["friends"].array?.map(Friend.init) ?? []
       let greeting          = json["greeting"] as? String,
@@ -98,7 +98,7 @@ let modelResults = try bench { bytes in
   let data = Data(bytes: bytes)
 
   let json: Any = try JSONSerialization.jsonObject(with: data)
-  guard let array = json as? [Any] else { fatalError() }
+  guard let array = json as? NSArray else { fatalError() }
   _ = try array.map(User.init)
 }
 
